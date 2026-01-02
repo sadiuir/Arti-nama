@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsip Makna Nama: Muhammad Abdullah Hasyim Musadi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles for Specific Needs */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #fafaf9; /* Stone-50 */
+            color: #44403c; /* Stone-700 */
+        }
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #d97706; /* Amber-600 */
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+        .active-tab {
+            background-color: #d97706; /* Amber-600 */
+            color: white;
+            border-color: #d97706;
+        }
+        .inactive-tab {
+            background-color: white;
+            color: #78350f; /* Amber-900 */
+            border-color: #d6d3d1; /* Stone-300 */
+        }
+        .inactive-tab:hover {
+            background-color: #fef3c7; /* Amber-50 */
+        }
+    </style>
+    <!-- Chosen Palette: Warm Heritage (Stone Base, Amber Accents, Deep Brown Text) -->
+    <!-- Application Structure Plan: 
+         1. Hero Section: Title and Introduction to the document's purpose (Legacy).
+         2. Interactive Etymology: A tabbed interface to explore the deep meaning of each name part (Muhammad, Abdullah, Hasyim, Musadi) without overwhelming the user with text blocks.
+         3. Historical Lineage: A visual vertical flow comparison between the User's name structure and the Prophet's lineage to visualize the "Pohon Silsilah Mini" concept.
+         4. Synthesis & Character Profile: A summary section combined with a Radar Chart to visualize the balance of attributes (Spiritual, Social, Personal Integrity, Fortune) derived from the names.
+    -->
+    <!-- Visualization & Content Choices:
+         - Etymology: Interactive Tabs -> Allows focus on one name at a time.
+         - Lineage: Vertical Flow Layout (Flex/Grid) -> Visually connects the generations.
+         - Character Analysis: Radar Chart (Chart.js) -> Visualizes the "holistic" personality the name hopes to build.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-stone-900 text-amber-50 py-4 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <span class="serif-font text-xl font-bold tracking-wider">ARSIP WARISAN</span>
+            <div class="text-sm font-light hidden sm:block">Pesan Almarhum Ayah</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative bg-stone-200 py-16 px-4 border-b-4 border-amber-700">
+        <div class="container mx-auto text-center max-w-4xl">
+            <div class="inline-block px-3 py-1 mb-4 border border-amber-700 text-amber-800 rounded-full text-xs font-bold uppercase tracking-widest bg-amber-100">Dokumen Pribadi</div>
+            <h1 class="text-4xl md:text-6xl font-bold text-stone-900 mb-2 leading-tight">MUHAMMAD ABDULLAH<br><span class="text-amber-700">HASYIM MUSADI</span></h1>
+            <p class="text-xl serif-font italic text-stone-600 mt-4 mb-8">"Sadi"</p>
+            <p class="text-lg text-stone-700 leading-relaxed max-w-2xl mx-auto">
+                Berikut adalah kompilasi lengkap data mengenai arti, makna, dan filosofi nama Anda. Dokumen ini disusun rapi agar mudah Anda simpan sebagai warisan pemikiran.
+            </p>
+            <div class="mt-10 flex justify-center gap-4">
+                <button onclick="document.getElementById('etymology').scrollIntoView()" class="px-6 py-3 bg-amber-700 text-white font-semibold rounded hover:bg-amber-800 transition shadow-lg">Mulai Analisis</button>
+                <button onclick="document.getElementById('synthesis').scrollIntoView()" class="px-6 py-3 bg-white text-amber-700 border border-amber-700 font-semibold rounded hover:bg-stone-100 transition shadow">Lihat Kesimpulan</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-12 space-y-24 max-w-6xl">
+
+        <!-- Section 1: Etymology Analysis -->
+        <section id="etymology" class="scroll-mt-24">
+            <div class="text-center mb-10 max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4 serif-font">I. Analisis Etimologi</h2>
+                <p class="text-stone-600">
+                    Bagian ini membedah setiap kata dalam nama Anda berdasarkan akar kata bahasa Arab. Pilih setiap bagian nama di bawah ini untuk mengungkap lapisan makna, sejarah, dan harapan karakter yang terkandung di dalamnya.
+                </p>
+            </div>
+
+            <!-- Interactive Tab System -->
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-stone-200">
+                <!-- Tabs -->
+                <div class="flex flex-wrap border-b border-stone-200 bg-stone-50" id="nameTabs">
+                    <!-- Buttons injected by JS -->
+                </div>
+
+                <!-- Content Area -->
+                <div class="p-8 md:p-12">
+                    <div id="etymologyContent" class="grid md:grid-cols-2 gap-10 items-center transition-all duration-300">
+                        <!-- Content injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Historical Lineage -->
+        <section id="history" class="scroll-mt-24">
+            <div class="text-center mb-12 max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4 serif-font">II. Analisis Historis</h2>
+                <p class="text-stone-600">
+                    Struktur nama Anda bukanlah susunan acak. Almarhum Ayah menyusunnya sebagai "Pohon Silsilah Mini" yang mereplikasi urutan nasab Nabi Muhammad SAW. Visualisasi di bawah ini menunjukkan paralel antara nama Anda dan sejarah mulia tersebut.
+                </p>
+            </div>
+
+            <div class="bg-stone-100 p-6 md:p-10 rounded-2xl border-t-8 border-stone-800 shadow-inner">
+                <div class="grid md:grid-cols-2 gap-8 relative">
+                    <!-- Vertical Divider for Desktop -->
+                    <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-stone-300 transform -translate-x-1/2 border-r border-dashed border-stone-400"></div>
+
+                    <!-- Column 1: Your Name -->
+                    <div class="space-y-6">
+                        <div class="text-center mb-6">
+                            <h3 class="text-xl font-bold text-amber-700 uppercase tracking-widest">Urutan Nama Anda</h3>
+                        </div>
+                        
+                        <div class="relative pl-8 md:pl-0 flex flex-col gap-6">
+                            <!-- Step 1 -->
+                            <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-amber-500 relative ml-4">
+                                <span class="absolute -left-6 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-amber-500 border-2 border-white"></span>
+                                <h4 class="font-bold text-lg">1. Muhammad</h4>
+                                <p class="text-sm text-stone-500">Nama Depan (Identitas Diri)</p>
+                            </div>
+                            
+                            <!-- Arrow -->
+                            <div class="text-center text-stone-400 text-2xl ml-4">↓</div>
+
+                            <!-- Step 2 -->
+                            <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-stone-500 relative ml-4">
+                                <span class="absolute -left-6 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-stone-500 border-2 border-white"></span>
+                                <h4 class="font-bold text-lg">2. Abdullah</h4>
+                                <p class="text-sm text-stone-500">Nama Tengah (Penghubung)</p>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div class="text-center text-stone-400 text-2xl ml-4">↓</div>
+
+                            <!-- Step 3 -->
+                            <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-stone-800 relative ml-4">
+                                <span class="absolute -left-6 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-stone-800 border-2 border-white"></span>
+                                <h4 class="font-bold text-lg">3. Hasyim</h4>
+                                <p class="text-sm text-stone-500">Nama Keluarga/Leluhur</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Prophet's Lineage -->
+                    <div class="space-y-6 mt-12 md:mt-0">
+                        <div class="text-center mb-6">
+                            <h3 class="text-xl font-bold text-stone-700 uppercase tracking-widest">Padanan Silsilah Nabi</h3>
+                        </div>
+
+                        <div class="relative pl-8 md:pl-0 flex flex-col gap-6">
+                            <!-- Step 1 -->
+                            <div class="bg-amber-50 p-4 rounded-lg shadow-sm border border-amber-200 relative ml-4">
+                                <h4 class="font-bold text-lg text-amber-900">Nabi Muhammad SAW</h4>
+                                <p class="text-sm text-stone-500 italic">Sang Panutan Utama</p>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div class="text-center text-stone-400 text-2xl ml-4">↓</div>
+
+                            <!-- Step 2 -->
+                            <div class="bg-stone-50 p-4 rounded-lg shadow-sm border border-stone-200 relative ml-4">
+                                <h4 class="font-bold text-lg text-stone-800">Abdullah bin Abdul Muthalib</h4>
+                                <p class="text-sm text-stone-500 italic">Ayah Kandung Nabi</p>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div class="text-center text-stone-400 text-2xl ml-4">↓</div>
+
+                            <!-- Step 3 -->
+                            <div class="bg-stone-50 p-4 rounded-lg shadow-sm border border-stone-200 relative ml-4">
+                                <h4 class="font-bold text-lg text-stone-800">Hasyim bin Abdu Manaf</h4>
+                                <p class="text-sm text-stone-500 italic">Leluhur Utama (Bani Hasyim)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 bg-amber-100 p-4 rounded text-center border border-amber-200">
+                    <p class="text-amber-900 font-medium">Filosofi: Pondasi hidup Anda haruslah mengikuti jejak keluarga paling mulia dalam sejarah manusia.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Synthesis & Radar Chart -->
+        <section id="synthesis" class="scroll-mt-24">
+            <div class="grid lg:grid-cols-5 gap-10">
+                
+                <!-- Definition Card -->
+                <div class="lg:col-span-3 bg-gradient-to-br from-stone-800 to-stone-900 text-white p-10 rounded-2xl shadow-2xl flex flex-col justify-center">
+                    <h2 class="text-3xl font-bold mb-6 serif-font text-amber-400">III. Kesimpulan Utuh</h2>
+                    <p class="text-stone-300 text-lg mb-8 leading-relaxed italic">
+                        "Sadi adalah seorang hamba Allah yang taat <strong class="text-white">(Abdullah)</strong> dan berakhlak terpuji <strong class="text-white">(Muhammad)</strong>, yang mewarisi semangat kedermawanan para leluhur mulia <strong class="text-white">(Bani Hasyim)</strong>, serta ditakdirkan menjadi pribadi yang hidupnya penuh keberuntungan dan kebahagiaan <strong class="text-white">(Musadi)</strong>."
+                    </p>
+                    <div class="border-t border-stone-700 pt-6">
+                        <p class="text-sm text-stone-400 uppercase tracking-widest mb-2">Pesan Untuk Disimpan</p>
+                        <p class="text-stone-300 font-light">Ini bukan sekadar nama, melainkan doa panjang dari orang tua yang menyertai setiap langkah hidupmu.</p>
+                    </div>
+                </div>
+
+                <!-- Chart Card -->
+                <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-lg border border-stone-200 flex flex-col">
+                    <h3 class="text-lg font-bold text-center mb-2 text-stone-700">Profil Keseimbangan Karakter</h3>
+                    <p class="text-xs text-center text-stone-500 mb-4">Visualisasi elemen karakter berdasarkan komponen nama</p>
+                    
+                    <div class="chart-container flex-grow">
+                        <canvas id="identityRadar"></canvas>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <span class="inline-block w-3 h-3 bg-amber-600 rounded-full mr-2"></span>
+                        <span class="text-xs text-stone-500 font-semibold">Potensi Diri (Doa Orang Tua)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-900 text-stone-400 py-10 mt-12 border-t border-stone-800">
+        <div class="container mx-auto px-4 text-center">
+            <h4 class="serif-font text-amber-500 text-2xl mb-4">Muhammad Abdullah Hasyim Musadi</h4>
+            <p class="text-sm max-w-xl mx-auto mb-6">Dokumen ini merupakan warisan digital yang diambil dari arsip pesan almarhum Ayah. Disusun untuk kemudahan pemahaman dan pelestarian makna.</p>
+            <div class="text-xs text-stone-600 uppercase tracking-widest">© Arsip Keluarga</div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Data Store
+        const nameData = [
+            {
+                id: 'muhammad',
+                word: 'MUHAMMAD',
+                arabic: 'محمد',
+                origin: 'Hamida (Memuji)',
+                literal: 'Yang Terpuji; Orang yang dimuliakan.',
+                character: 'Simbol integritas dan akhlak mulia. Doa agar menjadi pribadi yang tidak tercela di mata manusia maupun Tuhan.',
+                color: 'bg-amber-600'
+            },
+            {
+                id: 'abdullah',
+                word: 'ABDULLAH',
+                arabic: 'عبد الله',
+                origin: 'Abd (Hamba) + Allah',
+                literal: 'Hamba Allah.',
+                character: 'Simbol ketundukan mutlak. Pengingat bahwa jabatan tertinggi manusia hanyalah sebagai pelayan Sang Pencipta.',
+                color: 'bg-stone-600'
+            },
+            {
+                id: 'hasyim',
+                word: 'HASYIM',
+                arabic: 'هاشم',
+                origin: 'Hasyama (Memecahkan Roti)',
+                literal: 'Pemecah Roti (Dermawan).',
+                character: 'Simbol kedermawanan, jiwa sosial, dan kepemimpinan yang melayani. Merujuk pada leluhur yang memberi makan jamaah haji.',
+                color: 'bg-stone-800'
+            },
+            {
+                id: 'musadi',
+                word: 'MUSADI',
+                arabic: 'مسعد',
+                origin: 'Sa\'ada (Bahagia/Beruntung)',
+                literal: 'Orang yang dilimpahkan kebahagiaan.',
+                character: 'Doa agar perjalanan hidup selalu berakhir baik, penuh keberkahan, dan dijauhkan dari kesialan.',
+                color: 'bg-emerald-700'
+            }
+        ];
+
+        let currentTab = 0;
+
+        // Render Tabs
+        function renderTabs() {
+            const tabContainer = document.getElementById('nameTabs');
+            tabContainer.innerHTML = nameData.map((item, index) => `
+                <button 
+                    onclick="switchTab(${index})"
+                    class="flex-1 py-4 px-2 text-center border-b-2 font-bold transition-colors duration-200 text-sm md:text-base ${index === currentTab ? 'active-tab border-amber-600' : 'inactive-tab border-transparent'}"
+                >
+                    ${item.word}
+                </button>
+            `).join('');
+        }
+
+        // Render Content
+        function renderContent() {
+            const contentContainer = document.getElementById('etymologyContent');
+            const data = nameData[currentTab];
+            
+            // Animation reset
+            contentContainer.style.opacity = '0';
+            
+            setTimeout(() => {
+                contentContainer.innerHTML = `
+                    <div class="flex flex-col items-center justify-center space-y-4">
+                        <div class="w-32 h-32 md:w-48 md:h-48 rounded-full ${data.color} flex items-center justify-center text-white shadow-xl mb-4 border-4 border-stone-100">
+                            <span class="text-4xl md:text-6xl font-bold serif-font">${data.arabic}</span>
+                        </div>
+                        <h3 class="text-2xl md:text-4xl font-bold text-stone-800 serif-font">${data.word}</h3>
+                        <p class="text-stone-500 font-mono text-sm uppercase tracking-widest">Asal Kata: ${data.origin}</p>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-stone-50 p-6 rounded-lg border-l-4 ${data.color.replace('bg-', 'border-')} shadow-sm">
+                            <h4 class="font-bold text-stone-700 mb-2 flex items-center">
+                                <span class="mr-2 text-xl">📖</span> Arti Harfiah
+                            </h4>
+                            <p class="text-stone-600 text-lg leading-relaxed">${data.literal}</p>
+                        </div>
+                        
+                        <div class="bg-stone-50 p-6 rounded-lg border-l-4 ${data.color.replace('bg-', 'border-')} shadow-sm">
+                            <h4 class="font-bold text-stone-700 mb-2 flex items-center">
+                                <span class="mr-2 text-xl">💡</span> Makna Filosofis
+                            </h4>
+                            <p class="text-stone-600 text-lg leading-relaxed">${data.character}</p>
+                        </div>
+                    </div>
+                `;
+                contentContainer.style.opacity = '1';
+            }, 200);
+        }
+
+        function switchTab(index) {
+            currentTab = index;
+            renderTabs();
+            renderContent();
+        }
+
+        // Initialize Charts
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTabs();
+            renderContent();
+
+            // Radar Chart Configuration
+            const ctx = document.getElementById('identityRadar').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Integritas (Muhammad)', 'Spiritualitas (Abdullah)', 'Sosial/Dermawan (Hasyim)', 'Keberuntungan (Musadi)'],
+                    datasets: [{
+                        label: 'Nilai Inti Nama',
+                        data: [100, 100, 100, 100], // Ideal state - full balance
+                        backgroundColor: 'rgba(217, 119, 6, 0.2)', // Amber-600 with opacity
+                        borderColor: 'rgba(217, 119, 6, 1)',
+                        pointBackgroundColor: 'rgba(217, 119, 6, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(217, 119, 6, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: true,
+                                color: '#e5e7eb'
+                            },
+                            grid: {
+                                color: '#e5e7eb'
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 11,
+                                    family: "'Lato', sans-serif",
+                                    weight: 'bold'
+                                },
+                                color: '#44403c'
+                            },
+                            ticks: {
+                                display: false, // Hide numbers
+                                max: 100,
+                                min: 0
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: '#292524',
+                            titleFont: { family: "'Playfair Display', serif" },
+                            bodyFont: { family: "'Lato', sans-serif" },
+                            callbacks: {
+                                label: function(context) {
+                                    return 'Fokus Nilai: Maksimal';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
